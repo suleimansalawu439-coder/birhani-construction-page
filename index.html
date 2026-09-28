@@ -254,8 +254,8 @@ footer .f-contact svg{width:16px;height:16px;flex:none;margin-top:3px;color:var(
   .f-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:860px){
-  .nav-links{position:fixed;inset:0 0 auto 0;top:0;padding:96px 6% 34px;background:#fff;flex-direction:column;align-items:flex-start;gap:18px;box-shadow:var(--shadow-lg);transform:translateY(-110%);transition:.35s;z-index:55}
-  .nav-links.open{transform:none}
+  .nav-links{position:fixed;inset:0 0 auto 0;top:0;padding:96px 6% 34px;background:#fff;flex-direction:column;align-items:flex-start;gap:18px;box-shadow:var(--shadow-lg);transform:translateY(-110%);visibility:hidden;pointer-events:none;transition:transform .35s ease,visibility 0s linear .35s;z-index:55}
+  .nav-links.open{transform:none;visibility:visible;pointer-events:auto;transition:transform .35s ease}
   .burger{display:block;z-index:65;position:relative}
   .burger.x span:nth-child(1){transform:translateY(7.6px) rotate(45deg)}
   .burger.x span:nth-child(2){opacity:0}

@@ -48,15 +48,18 @@
   --font-h:'Montserrat',system-ui,sans-serif;
   --font-b:'Manrope',system-ui,sans-serif;
 }
-/* ============ 2. IMAGE CROPS (logo + CEO lifted from poster) ============ */
-.crop{position:relative;overflow:hidden;display:block;background:#eaf4fa}
-.crop>img{position:absolute;max-width:none;height:auto;width:var(--cw);left:var(--cx);top:var(--cy);pointer-events:none;user-select:none}
-/* logo MARK only (cloud + towers) */
-.crop--mark{aspect-ratio:calc(1.3721*var(--poster-ar));--cw:847.5%;--cx:-23.73%;--cy:-41.86%}
-/* full logo LOCKUP (mark + wordmark + tagline) */
-.crop--lockup{aspect-ratio:calc(2.6735*var(--poster-ar));--cw:381.7%;--cx:-8.40%;--cy:-30.61%}
-/* CEO portrait (helmet + suit + building model) */
-.crop--ceo{aspect-ratio:calc(0.7622*var(--poster-ar));--cw:183.49%;--cx:-83.49%;--cy:-39.86%}
+/* ============ 2. IMAGE DISPLAY (pre-cropped logo + CEO assets) ============ */
+.crop{position:relative;overflow:hidden;display:block;background:transparent}
+.crop>img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;user-select:none}
+/* logo MARK only (building icon) — mark.png is 93x102 */
+.crop--mark{aspect-ratio:93/102}
+.crop--mark>img{object-fit:contain}
+/* full logo LOCKUP (mark + wordmark + tagline) — logo.png is 298x106 */
+.crop--lockup{aspect-ratio:298/106}
+.crop--lockup>img{object-fit:contain}
+/* CEO portrait — download.png/jpg are 420x660 */
+.crop--ceo{aspect-ratio:420/660}
+.crop--ceo>img{object-fit:cover;object-position:center top}
 .crop--missing::after{content:attr(data-fallback);position:absolute;inset:0;display:grid;place-items:center;
   font:800 12px/1.2 var(--font-h);color:var(--green);letter-spacing:.06em;text-align:center;padding:4px}
 /* logo sits on a "sky chip" so the poster's sky background blends in */
@@ -141,8 +144,8 @@ header.nav.scrolled{border-color:var(--line);box-shadow:0 6px 24px rgba(19,34,56
 .mission-card{background:linear-gradient(160deg,var(--green-t),#fff 65%);border:1px solid #d5ecd9;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
 .mission-card h3{font-size:18px;color:var(--green-d);margin-bottom:10px;display:flex;gap:10px;align-items:center}
 .mission-card p{color:var(--ink);margin:0;font-size:15.5px}
-.mission-card .chip-sky{margin-top:22px}
-.mission-card .crop--lockup{width:100%;max-width:230px}
+.mission-card .chip-sky{margin-top:22px;display:flex}
+.mission-card .crop--lockup{width:100%;max-width:230px;flex:none}
 .ceo-band{margin-top:56px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:34px;display:grid;grid-template-columns:250px 1fr;gap:36px;align-items:center}
 .ceo-band .crop--ceo{border-radius:18px;border:4px solid var(--green-t)}
 .ceo-band blockquote{font:700 clamp(18px,2.2vw,25px)/1.45 var(--font-h);color:var(--navy);margin-bottom:16px}
@@ -289,7 +292,7 @@ footer .f-contact svg{width:16px;height:16px;flex:none;margin-top:3px;color:var(
     <a class="brand" href="#home" aria-label="Birhani Construction Limited — home">
       <span class="chip-sky">
         <span class="crop crop--mark" data-fallback="BIRHANI">
-          <img src="logo.png" alt="Birhani Construction Limited logo" data-poster>
+          <img src="mark.png" alt="Birhani Construction Limited logo" data-poster>
         </span>
       </span>
       <span class="brand-txt">
@@ -576,7 +579,7 @@ footer .f-contact svg{width:16px;height:16px;flex:none;margin-top:3px;color:var(
     <div>
       <span class="chip-sky">
         <span class="crop crop--lockup" data-fallback="BIRHANI CONSTRUCTION LIMITED">
-          <img src="assets/birhani-poster.jpg" alt="Birhani Construction Limited logo" loading="lazy" data-poster>
+          <img src="logo.png" alt="Birhani Construction Limited logo" loading="lazy" data-poster>
         </span>
       </span>
       <p class="f-tag" style="margin-top:16px">Your Comfort, Our Mission.</p>
